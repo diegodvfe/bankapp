@@ -61,15 +61,80 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+
+const displayMovments = function (movements) {
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+    <div class="movements__row">
+          <div class="movements__type movements__type--${type}">
+          ${i + 1} 
+          ${type}
+          </div>
+          <div class="movements__value">${mov}</div>
+    </div>
+    `;
+
+    containerMovements.insertAdjacentHTML("afterbegin", html)
+  })
+}
+
+displayMovments(account1.movements)
+
+/////////////////////////////////////////
+const checkDogs = function (dogsJulia, dogsKate){
+  const dogsJuliaCorrect = dogsJulia.slice();
+  dogsJuliaCorrect.splice(0,1)
+  dogsJuliaCorrect.splice(2)
+ const dogs = dogsJuliaCorrect.concat(dogsKate)
+ 
+  dogs.forEach(function (dog,i){
+    // if(dog>= 3){
+    //   console.log(`Dog number ${i + 1} is an adult, and is ${dog} years`)
+    // }else {
+    //   console.log(`Dog number ${i + 1} is an pupy, and is ${dog} pupy`)
+    // }
+
+     const Yearpuppy = dog >= 3 
+    ? `Dog number ${i + 1} is an adult, and is ${dog} years` 
+    : `Dog number ${i + 1} is an pupy, and is ${dog} pupy`
+
+    console.log(Yearpuppy)
+  })
+
+}
+
+checkDogs([3,5,2,12,7], [5,1,6,3,4] )
+
+const checkAge = function(firtYear, lastYear){
+  const firstYearAvaible = firtYear.slice();
+ // firstYearAvaible.splice(1,2)
+ // firstYearAvaible.splice(3)
+  //console.log(firstYearAvaible)
+  const students = firstYearAvaible.concat(lastYear)
+  console.table(students)
+
+    students.forEach(function(student, i){
+      const yearStudents = student >= 20 ? `The student ${i+1} can go to the party ${student}`
+      : `The student ${i+1} can not go to the party ${student}`;
+
+      console.log(yearStudents)
+    })
+}
+
+checkAge([16, 20, 21, 18,22], [21, 19, 28, 26, 25, 30])
+//[5,1,6,3,4]
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+//const currencies = new Map([
+  //['USD', 'United States dollar'],
+  //['EUR', 'Euro'],
+  //['GBP', 'Pound sterling'],
+//]);
 
 
 
@@ -113,31 +178,49 @@ console.log(letters.join(" - "));
 
 const arr = [23, 11,64]
 console.log(arr[0])
+///////
 console.log(arr.at(0))
+
 // getting the last array element
 console.log( arr[arr.length -1]); // subtract the last number
 console.log(arr.slice(-1)[0])
 console.log(arr.at(-1));
 
-*/////
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-for( const movement of movements ){
+for( const [i, movement] of movements.entries() ){
   if(movement > 0){
-    console.log( `You deposited ${movement}`);
+    console.log( `Movements: ${i + 1}  You deposited ${movement}`);
   } else {
-    console.log(`You withdrew ${Math.abs(movement)}`);
+    console.log(` Movement: ${i + 1} You withdrew ${Math.abs(movement)}`);
   }
 }
 // we call the variable of the result 
 console.log("---------------FOR EACH METHOD-------------")
 movements.forEach(function(movement, index, array){// THIS part of the code we are using the callback to invocade
-if( movement = 0){// This is the 
-  console.log(`You deposited ${movement}`);
-}else {
-  console.log(`You withdre ${Math.abs(movement)}`);
-}
+  if( movement > 0){// This is the 
+    console.log(`Movements: ${index + 1 } You deposited ${movement}`);
+  }else {
+    console.log(`Movements: ${index + 1} You withdre ${Math.abs(movement)}`);
+  }
 });
+/////////////////////////////////
+const currencies2 = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 
+currencies2.forEach(function(value, key, map) {
+  console.log( `${key}: ${value}` );
+  
+})
 
+const currenciesUnique = new Set(["USD", "EUR", "Euro", "GBP", "Pound"]);
+console.log(currenciesUnique)
 
+currenciesUnique.forEach(function(value, _ , map){
+  console.log(`${value}: ${value}`)
+})
+
+*/////
