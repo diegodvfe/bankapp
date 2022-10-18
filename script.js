@@ -83,58 +83,79 @@ const displayMovments = function (movements) {
 
 displayMovments(account1.movements)
 
-/////////////////////////////////////////
-const checkDogs = function (dogsJulia, dogsKate){
-  const dogsJuliaCorrect = dogsJulia.slice();
-  dogsJuliaCorrect.splice(0,1)
-  dogsJuliaCorrect.splice(2)
- const dogs = dogsJuliaCorrect.concat(dogsKate)
+// const createUsernames = funciton (user2) {
+//   const usersNameClient = user2
+//    .toUpperCase()
+//    .split(" ")
+//    .map((name1) => name1[0])
+//    .join("")
+//  };
  
-  dogs.forEach(function (dog,i){
-    // if(dog>= 3){
-    //   console.log(`Dog number ${i + 1} is an adult, and is ${dog} years`)
-    // }else {
-    //   console.log(`Dog number ${i + 1} is an pupy, and is ${dog} pupy`)
-    // }
-
-     const Yearpuppy = dog >= 3 
-    ? `Dog number ${i + 1} is an adult, and is ${dog} years` 
-    : `Dog number ${i + 1} is an pupy, and is ${dog} pupy`
-
-    console.log(Yearpuppy)
-  })
-
+// console.log()
+    /////////////////->variables que deseamos///////
+const createDB = function(accs){
+accs.forEach(function(acc){
+  acc.username = acc.owner
+  .toLowerCase().split(" ").map(function(name){
+      return name[0]
+  }).join(" ")
+})
 }
+createDB(accounts)
+console.table(accounts)
 
-checkDogs([3,5,2,12,7], [5,1,6,3,4] )
+/////////////////////////////////////////
+// const checkDogs = function (dogsJulia, dogsKate){
+//   const dogsJuliaCorrect = dogsJulia.slice();
+//   dogsJuliaCorrect.splice(0,1)
+//   dogsJuliaCorrect.splice(2)
+//  const dogs = dogsJuliaCorrect.concat(dogsKate)
+ 
+//   dogs.forEach(function (dog,i){
+//     // if(dog>= 3){
+//     //   console.log(`Dog number ${i + 1} is an adult, and is ${dog} years`)
+//     // }else {
+//     //   console.log(`Dog number ${i + 1} is an pupy, and is ${dog} pupy`)
+//     // }
 
-const checkAge = function(firtYear, lastYear){
-  const firstYearAvaible = firtYear.slice();
- // firstYearAvaible.splice(1,2)
- // firstYearAvaible.splice(3)
-  //console.log(firstYearAvaible)
-  const students = firstYearAvaible.concat(lastYear)
-  console.table(students)
+//      const Yearpuppy = dog >= 3 
+//     ? `Dog number ${i + 1} is an adult, and is ${dog} years` 
+//     : `Dog number ${i + 1} is an pupy, and is ${dog} pupy`
 
-    students.forEach(function(student, i){
-      const yearStudents = student >= 20 ? `The student ${i+1} can go to the party ${student}`
-      : `The student ${i+1} can not go to the party ${student}`;
+//     console.log(Yearpuppy)
+//   })
 
-      console.log(yearStudents)
-    })
-}
+// }
 
-checkAge([16, 20, 21, 18,22], [21, 19, 28, 26, 25, 30])
+// checkDogs([3,5,2,12,7], [5,1,6,3,4] )
+
+// const checkAge = function(firtYear, lastYear){
+//   const firstYearAvaible = firtYear.slice();
+//  // firstYearAvaible.splice(1,2)
+//  // firstYearAvaible.splice(3)
+//   //console.log(firstYearAvaible)
+//   const students = firstYearAvaible.concat(lastYear)
+//   console.table(students)
+
+//     students.forEach(function(student, i){
+//       const yearStudents = student >= 20 ? `The student ${i+1} can go to the party ${student}`
+//       : `The student ${i+1} can not go to the party ${student}`;
+
+//       console.log(yearStudents)
+//     })
+// }
+
+// checkAge([16, 20, 21, 18,22], [21, 19, 28, 26, 25, 30])
 //[5,1,6,3,4]
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-//const currencies = new Map([
-  //['USD', 'United States dollar'],
-  //['EUR', 'Euro'],
-  //['GBP', 'Pound sterling'],
-//]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 
 
@@ -224,3 +245,45 @@ currenciesUnique.forEach(function(value, _ , map){
 })
 
 */////
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroValue = 1.1
+
+const movementsUsd= movements.map(function(mov, i){
+  return mov * euroValue 
+})
+console.table(movementsUsd)
+
+const movementsUsd1 = movements.map((mov) =>{
+ return mov * euroValue
+})
+console.table(movementsUsd1)
+
+const movementsUsdFor = [];
+for ( const mov of movements) 
+movementsUsdFor.push(mov * euroValue)
+
+console.table( movementsUsdFor)
+
+movements.map((mov, i) => {
+  return `Movement ${i +1 } : You $ {mov > 0 ? "deposited : "withdraw} ${Math.abs(mov)}`
+})
+///////////////////////////////////////////////
+
+const user = "Diego Francisco Lopez";
+const username = user.toLowerCase().split(" ").map(function(name) { 
+  return name [0]
+}).join("")
+console.log(username)
+
+////  FILITER///////////////////////////////////////
+
+const deposits = movements.filter(function (){
+  return 
+})
+
+
+
+
