@@ -249,41 +249,52 @@ currenciesUnique.forEach(function(value, _ , map){
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const euroValue = 1.1
+// const euroValue = 1.1
 
-const movementsUsd= movements.map(function(mov, i){
-  return mov * euroValue 
-})
-console.table(movementsUsd)
+// const movementsUsd= movements.map(function(mov, i){
+//   return mov * euroValue 
+// })
+// console.table(movementsUsd)
 
-const movementsUsd1 = movements.map((mov) =>{
- return mov * euroValue
-})
-console.table(movementsUsd1)
+// const movementsUsd1 = movements.map((mov) =>{
+//  return mov * euroValue
+// })
+// console.table(movementsUsd1)
 
-const movementsUsdFor = [];
-for ( const mov of movements) 
-movementsUsdFor.push(mov * euroValue)
+// const movementsUsdFor = [];
+// for ( const mov of movements) 
+// movementsUsdFor.push(mov * euroValue)
 
-console.table( movementsUsdFor)
+// console.table( movementsUsdFor)
 
-movements.map((mov, i) => {
-  return `Movement ${i +1 } : You $ {mov > 0 ? "deposited : "withdraw} ${Math.abs(mov)}`
-})
-///////////////////////////////////////////////
+// movements.map((mov, i) => {
+//   return `Movement ${i +1 } : You $ {mov > 0 ? "deposited : "withdraw} ${Math.abs(mov)}`
+// })
+// ///////////////////////////////////////////////
 
-const user = "Diego Francisco Lopez";
-const username = user.toLowerCase().split(" ").map(function(name) { 
-  return name [0]
-}).join("")
-console.log(username)
+// const user = "Diego Francisco Lopez";
+// const username = user.toLowerCase().split(" ").map(function(name) { 
+//   return name [0]
+// }).join("")
+// console.log(username)
 
 ////  FILITER///////////////////////////////////////
 
-const deposits = movements.filter(function (){
-  return 
-})
+// const deposits = movements.filter(function (mov){
+//   return mov > 0 
+// })
+// console.log(movements)
+// console.table(deposits)
 
+// const depositsFor = []
+// for (const mov of movements) if(mov > 0) depositsFor.push(mov)
+// console.log(depositsFor)
+// //////////////////////
+// const withdraw = movements.filter(function (mov){
+//   return mov < 0
+// })
+// console.table(withdraw)
 
-
-
+// const withdrawFor = []
+// for (const mov of movements) if ( mov < 0) withdrawFor.push(mov)
+// console.log(withdrawFor)
