@@ -104,6 +104,8 @@ accs.forEach(function(acc){
 createDB(accounts)
 console.table(accounts)
 
+const calcPrint
+
 /////////////////////////////////////////
 // const checkDogs = function (dogsJulia, dogsKate){
 //   const dogsJuliaCorrect = dogsJulia.slice();
@@ -298,3 +300,21 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const withdrawFor = []
 // for (const mov of movements) if ( mov < 0) withdrawFor.push(mov)
 // console.log(withdrawFor)
+
+console.log(movements)
+const balancerOne = movements.reduce(function(acc, cur){
+ console.log(`Interation ${i}: ${acc}` )
+  return acc + cur;
+
+}, 0)
+console.log(balancerOne);
+
+let balance2 = 0;
+for ( const mov of movements) balance2 += mov;
+cons
+
+const balanceAccount = account2.movements.reduce(function(acc, cur){
+  return acc + cur;
+}, 3)
+
+console.log(balanceAccount)
