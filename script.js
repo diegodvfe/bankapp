@@ -307,25 +307,37 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // for (const mov of movements) if ( mov < 0) withdrawFor.push(mov)
 // console.log(withdrawFor)
 
-console.log(movements)
-const balancerOne = movements.reduce(function(acc, cur){
-//  console.log(`Interation ${i}: ${acc}` )
-  return acc + cur;
+// console.log(movements)
+// const balancerOne = movements.reduce(function(acc, cur){
+// //  console.log(`Interation ${i}: ${acc}` )
+//   return acc + cur;
 
-}, 0)
-console.log(balancerOne);
+// }, 0)
+// console.log(balancerOne);
 
-let balance2 = 0;
-for ( const mov of movements) balance2 += mov;
+// let balance2 = 0;
+// for ( const mov of movements) balance2 += mov;
 
 
-const calcBalaceAccount = function(movements) {
-  const balanceAccount = movements.reduce(function(acc, mov){
-    return acc + mov;
-  }, 0)
- labelBalance.textContent = `${balanceAccount} EUR`
-}
+// const calcBalaceAccount = function(movements) {
+//   const balanceAccount = movements.reduce(function(acc, mov){
+//     return acc + mov;
+//   }, 0)
+//  labelBalance.textContent = `${balanceAccount} EUR`
+// }
 // calcBalaceAccount(account1.movements)
 // console.log( calcBalaceAccount(account2.movements))
 
+
+
+
+const calcPlusValue = function(movements) {
+  const max = movements.reduce((acc, mov)=>{
+     const max1 = acc > mov ? acc : mov;
+     return max1;
+  }, movements[0])
+  console.log(max)
+  labelBalance.textContent = `${max} USD`
+}
+calcPlusValue(account1.movements)
 
