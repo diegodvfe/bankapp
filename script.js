@@ -341,3 +341,22 @@ const calcPlusValue = function(movements) {
 }
 calcPlusValue(account1.movements)
 
+const calcAvarageHumanAge = function(age){
+  const humans = age.map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+
+  const adults = humans.filter(age => age <= 18 )
+  console.table(humans)
+  console.log(adults)
+                                                            // adults.length  arr.length, 0
+  // const avarege = adults.reduce((acc, age) => acc + age, 0) / adults.length
+  // return avarege
+
+  const avaregeNum = adults.reduce((acc, age) =>
+    acc + age, 0) / adults.length
+  return avaregeNum
+  console.log( avaregeNum)
+}
+ const avg1 = calcAvarageHumanAge([5,2,4,1,15,8,3])
+ const avg2 = calcAvarageHumanAge([16,6,10,5,6,1,4])
+
+ console.log( avg1, avg2)
