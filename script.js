@@ -88,20 +88,20 @@ const calcDisplayMovements = function(movements){
   .reduce((acc, mov) => acc + mov, 0) 
   console.log(incomes)
   labelSumIn.textContent = `${incomes}`
+
+  const outcomer = movements.filter((mov) => mov < 0)
+  .reduce((acc, mov) => acc + mov, 0)
+  labelSumOut.textContent = `${Math.abs(outcomer)}`
+
+  const interest = movements
+  .filter( mov=> mov >0 )
+  .map(deposit => (deposit * 1.2) /100)
+  .reduce((acc,int) =>acc + int, 0 )
+  labelSumInterest.textContent = `${interest}`
 }
 calcDisplayMovements(account1.movements)
 
-const calcDisplayNegative = function(movements){
-  const outcomer = movements.filter((mov) => mov < 0)
-  .reduce((acc, mov) => acc + mov, 0)
-  labelSumOut.textContent = `${outcomer}`
-}
-calcDisplayNegative(account1.movements)
-
-const displayInsterst = function(interestRate){
-  const interest = interestRate
-  labelSumInterest.textContent = `${interest}`
-}
+const displayInsterst = function(interestrate){}
 displayInsterst(account1.interestRate)
 
 
