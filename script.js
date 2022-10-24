@@ -104,9 +104,6 @@ const calcDisplayMovements = function(movements){
 }
 calcDisplayMovements(account1.movements)
 
-const displayInsterst = function(interestrate){}
-displayInsterst(account1.interestRate)
-
 
 // const createUsernames = funciton (user2) {
 //   const usersNameClient = user2
@@ -417,10 +414,10 @@ const calcAvarageHumanAge = function(age){
 //  const avg4 = calcAvarageHumanAge2([16, 6, 10, 5, 6, 1, 4])
 //  console.log(avg3, avg4)
 
-const firstWithdrawl = movements.find (mov => mov < 0)
-console.log(movements)
-console.log(firstWithdrawl)
+// const firstWithdrawl = movements.find (mov => mov < 0)
+// console.log(movements)
+// console.log(firstWithdrawl)
 
-const account = accounts.find(acc => acc.movements === "Jessica Davis")
-console.log (account)
+// const account = accounts.find(acc => acc.movements === "Jessica Davis")
+// console.log (account)
 
