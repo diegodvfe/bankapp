@@ -73,7 +73,7 @@ const displayMovments = function (movements) {
           ${i + 1} 
           ${type}
           </div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov}$</div>
     </div>
     `;
 
@@ -84,14 +84,15 @@ const displayMovments = function (movements) {
 displayMovments(account1.movements)
 
 const calcDisplayMovements = function(movements){
+
   const incomes = movements.filter((mov)=> mov>0)
   .reduce((acc, mov) => acc + mov, 0) 
-  console.log(incomes)
-  labelSumIn.textContent = `${incomes}`
+  // console.log(incomes)
+  labelSumIn.textContent = `${incomes}$`
 
   const outcomer = movements.filter((mov) => mov < 0)
   .reduce((acc, mov) => acc + mov, 0)
-  labelSumOut.textContent = `${Math.abs(outcomer)}`
+  labelSumOut.textContent = `${Math.abs(outcomer)}$`
 
   const interest = movements
   .filter( mov=> mov >0 )
@@ -100,8 +101,8 @@ const calcDisplayMovements = function(movements){
     return int >= 1
   })
   .reduce((acc,int) =>acc + int, 0 )
-  labelSumInterest.textContent = `${interest}`
-}
+  labelSumInterest.textContent = `${interest}$`
+}// call the function 
 calcDisplayMovements(account1.movements)
 
 
@@ -120,11 +121,11 @@ accs.forEach(function(acc){
   acc.username = acc.owner
   .toLowerCase().split(" ").map(function(name){
       return name[0]
-  }).join(" ")
+  }).join("")
 })
 }
 createDB(accounts)
-console.table(accounts)
+// console.table(accounts)
 
 const calbalaceUser = function( movements){
   const balanceUserDB = movements.reduce((acc, mov)=>{
@@ -133,6 +134,37 @@ const calbalaceUser = function( movements){
   labelBalance.textContent = `${balanceUserDB} USD`
 }
 calbalaceUser(account1.movements)
+
+// Event handler
+// tenemos varias variable de transaciones
+let currentAccount;//-> utilizamos let para la movilidad de datos en la aplicacion
+
+btnLogin.addEventListener("click", function(event){
+ //Prevent form from submiting
+  event.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value)
+  console.log(currentAccount)
+
+  // condition
+  if ( currentAccount?.pin === Number(inputLoginPin.value)){
+    // console.log("LOGIN")
+    // Display UI and message
+    labelWelcome.textContent =`Welcome back, ${currentAccount.owner.split(" ")[0]}`
+   // contenedor de la aplicacion 
+   containerApp.style.opacity = 100;
+   
+    // Display movements__type
+    displayMovments(currentAccount.movements)
+    //Display balanceUserDB
+    calbalaceUser(currentAccount.movements)
+    // Display Summary
+    calcDisplayMovements(currentAccount.movements)
+  } 
+})
+
+
+
 
 /////////////////////////////////////////
 // const checkDogs = function (dogsJulia, dogsKate){
