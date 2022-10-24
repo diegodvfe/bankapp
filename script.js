@@ -389,30 +389,38 @@ const calcAvarageHumanAge = function(age){
  const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
- const totalDeposites = movements
- .filter(mov => mov > 0)
- .map((mov, i, arr) => {
-    // console.log()
-    // console.table(arr)
-    return mov * euToUsd
- })
- .reduce((acc, mov) =>  acc + mov, 0)
- console.log(totalDeposites)
+//  const totalDeposites = movements
+//  .filter(mov => mov > 0)
+//  .map((mov, i, arr) => {
+//     // console.log()
+//     // console.table(arr)
+//     return mov * euToUsd
+//  })
+//  .reduce((acc, mov) =>  acc + mov, 0)
+//  console.log(totalDeposites)
 
- ////////////////////////////////////////////////////////////////
-
-
+//  ////////////////////////////////////////////////////////////////
 
 
- const calcAvarageHumanAge2 = ages =>
-  ages
-  .map(age =>(age <= 2 ? 2 * age : 16 + age * 4))
-  .filter(age => age >= 18)
-  .reduce((acc, age, i, arr)=>
-    acc + age / arr.length, 0 
+
+
+//  const calcAvarageHumanAge2 = ages =>
+//   ages
+//   .map(age =>(age <= 2 ? 2 * age : 16 + age * 4))
+//   .filter(age => age >= 18)
+//   .reduce((acc, age, i, arr)=>
+//     acc + age / arr.length, 0 
  
-    );
+//     );
 
- const avg3 = calcAvarageHumanAge2([5, 2, 4, 1, 15, 8, 3])
- const avg4 = calcAvarageHumanAge2([16, 6, 10, 5, 6, 1, 4])
- console.log(avg3, avg4)
+//  const avg3 = calcAvarageHumanAge2([5, 2, 4, 1, 15, 8, 3])
+//  const avg4 = calcAvarageHumanAge2([16, 6, 10, 5, 6, 1, 4])
+//  console.log(avg3, avg4)
+
+const firstWithdrawl = movements.find (mov => mov < 0)
+console.log(movements)
+console.log(firstWithdrawl)
+
+const account = accounts.find(acc => acc.movements === "Jessica Davis")
+console.log (account)
+
