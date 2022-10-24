@@ -27,7 +27,7 @@ const account3 = {
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
+  owner: 'Sarah Lopez Smith',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
@@ -81,7 +81,7 @@ const displayMovments = function (movements) {
   })
 }
 
-displayMovments(account1.movements)
+//-------------!!! -------------------------------------------//
 
 const calcDisplayMovements = function(movements){
 
@@ -102,8 +102,8 @@ const calcDisplayMovements = function(movements){
   })
   .reduce((acc,int) =>acc + int, 0 )
   labelSumInterest.textContent = `${interest}$`
-}// call the function 
-calcDisplayMovements(account1.movements)
+}
+// calcDisplayMovements(account1.movements)
 
 
 // const createUsernames = funciton (user2) {
@@ -117,11 +117,11 @@ calcDisplayMovements(account1.movements)
 // console.log()
     /////////////////->variables que deseamos///////
 const createDB = function(accs){
-accs.forEach(function(acc){
-  acc.username = acc.owner
-  .toLowerCase().split(" ").map(function(name){
+      accs.forEach(function(acc){
+      acc.username = acc.owner
+      .toLowerCase().split(" ").map(function(name){
       return name[0]
-  }).join("")
+    }).join("")
 })
 }
 createDB(accounts)
@@ -133,7 +133,7 @@ const calbalaceUser = function( movements){
   }, 0)
   labelBalance.textContent = `${balanceUserDB} USD`
 }
-calbalaceUser(account1.movements)
+// calbalaceUser(account1.movements)
 
 // Event handler
 // tenemos varias variable de transaciones
@@ -147,13 +147,15 @@ btnLogin.addEventListener("click", function(event){
   console.log(currentAccount)
 
   // condition
-  if ( currentAccount?.pin === Number(inputLoginPin.value)){
+if ( currentAccount?.pin === Number(inputLoginPin.value)){
     // console.log("LOGIN")
     // Display UI and message
     labelWelcome.textContent =`Welcome back, ${currentAccount.owner.split(" ")[0]}`
    // contenedor de la aplicacion 
    containerApp.style.opacity = 100;
-   
+   // Clear inpunts fields
+   inputLoginUsername.value = inputLoginPin.value =  "";
+   inputLoginPin.blur();
     // Display movements__type
     displayMovments(currentAccount.movements)
     //Display balanceUserDB
@@ -165,50 +167,6 @@ btnLogin.addEventListener("click", function(event){
 
 
 
-
-/////////////////////////////////////////
-// const checkDogs = function (dogsJulia, dogsKate){
-//   const dogsJuliaCorrect = dogsJulia.slice();
-//   dogsJuliaCorrect.splice(0,1)
-//   dogsJuliaCorrect.splice(2)
-//  const dogs = dogsJuliaCorrect.concat(dogsKate)
- 
-//   dogs.forEach(function (dog,i){
-//     // if(dog>= 3){
-//     //   console.log(`Dog number ${i + 1} is an adult, and is ${dog} years`)
-//     // }else {
-//     //   console.log(`Dog number ${i + 1} is an pupy, and is ${dog} pupy`)
-//     // }
-
-//      const Yearpuppy = dog >= 3 
-//     ? `Dog number ${i + 1} is an adult, and is ${dog} years` 
-//     : `Dog number ${i + 1} is an pupy, and is ${dog} pupy`
-
-//     console.log(Yearpuppy)
-//   })
-
-// }
-
-// checkDogs([3,5,2,12,7], [5,1,6,3,4] )
-
-// const checkAge = function(firtYear, lastYear){
-//   const firstYearAvaible = firtYear.slice();
-//  // firstYearAvaible.splice(1,2)
-//  // firstYearAvaible.splice(3)
-//   //console.log(firstYearAvaible)
-//   const students = firstYearAvaible.concat(lastYear)
-//   console.table(students)
-
-//     students.forEach(function(student, i){
-//       const yearStudents = student >= 20 ? `The student ${i+1} can go to the party ${student}`
-//       : `The student ${i+1} can not go to the party ${student}`;
-
-//       console.log(yearStudents)
-//     })
-// }
-
-// checkAge([16, 20, 21, 18,22], [21, 19, 28, 26, 25, 30])
-//[5,1,6,3,4]
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -219,7 +177,7 @@ btnLogin.addEventListener("click", function(event){
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-
+const euToUsd = 1.1;
 
 /////////////////////////////////////////////////
 /*
@@ -268,6 +226,50 @@ console.log(arr.at(0))
 console.log( arr[arr.length -1]); // subtract the last number
 console.log(arr.slice(-1)[0])
 console.log(arr.at(-1));
+
+/////////////////////////////////////////
+// const checkDogs = function (dogsJulia, dogsKate){
+//   const dogsJuliaCorrect = dogsJulia.slice();
+//   dogsJuliaCorrect.splice(0,1)
+//   dogsJuliaCorrect.splice(2)
+//  const dogs = dogsJuliaCorrect.concat(dogsKate)
+ 
+//   dogs.forEach(function (dog,i){
+//     // if(dog>= 3){
+//     //   console.log(`Dog number ${i + 1} is an adult, and is ${dog} years`)
+//     // }else {
+//     //   console.log(`Dog number ${i + 1} is an pupy, and is ${dog} pupy`)
+//     // }
+
+//      const Yearpuppy = dog >= 3 
+//     ? `Dog number ${i + 1} is an adult, and is ${dog} years` 
+//     : `Dog number ${i + 1} is an pupy, and is ${dog} pupy`
+
+//     console.log(Yearpuppy)
+//   })
+
+// }
+
+// checkDogs([3,5,2,12,7], [5,1,6,3,4] )
+
+// const checkAge = function(firtYear, lastYear){
+//   const firstYearAvaible = firtYear.slice();
+//  // firstYearAvaible.splice(1,2)
+//  // firstYearAvaible.splice(3)
+//   //console.log(firstYearAvaible)
+//   const students = firstYearAvaible.concat(lastYear)
+//   console.table(students)
+
+//     students.forEach(function(student, i){
+//       const yearStudents = student >= 20 ? `The student ${i+1} can go to the party ${student}`
+//       : `The student ${i+1} can not go to the party ${student}`;
+
+//       console.log(yearStudents)
+//     })
+// }
+
+// checkAge([16, 20, 21, 18,22], [21, 19, 28, 26, 25, 30])
+//[5,1,6,3,4]
 
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -414,8 +416,7 @@ const calcAvarageHumanAge = function(age){
 
  console.log( avg1, avg2)
  */////
- const euToUsd = 1.1;
- const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//  const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
 //  const totalDeposites = movements
