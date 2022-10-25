@@ -106,15 +106,7 @@ const calcDisplayMovements = function(acc){
 }
 // calcDisplayMovements(accounts)
 
-// const createUsernames = funciton (user2) {
-//   const usersNameClient = user2
-//    .toUpperCase()
-//    .split(" ")
-//    .map((name1) => name1[0])
-//    .join("")
-//  };
- 
-// console.log()
+
     /////////////////->variables que deseamos///////
 const createDB = function(accs){
       accs.forEach(function(acc){
@@ -129,8 +121,7 @@ createDB(accounts)
 // console.table(accounts)
 
 const calbalaceUser = function(acc){
-  acc.balance = acc.movements.reduce((acc, mov)=> acc + mov , 0)
- 
+  acc.balance = acc.movements.reduce((acc, mov)=> acc + mov , 0);
   labelBalance.textContent = `${acc.balance} USD`
 }
 // calbalaceUser(accounts)
@@ -181,18 +172,16 @@ btnTransfer.addEventListener("click", function(event){
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
   console.log(amount, receiverAcc)
 
-  // const amountInteres = Number(inputLoanAmount.value)
-  // const receiverInter = accounts.find(acc => acc.interestRate !== inputTransferTo.value);
-  // console.log(amountInteres, receiverInter)
-
   if (amount > 0 && 
     receiverAcc &&
     currentAccount.balance >= amount && 
     receiverAcc?.username !== currentAccount.username) {
       // doing the transfer
         currentAccount.movements.push(-amount);
-        currentAccount.movements.push(amount);
+        receiverAcc.movements.push(amount);
 
+      //Update the UI
+      updateUI(currentAccount);
   }
 
 })
