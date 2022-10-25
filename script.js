@@ -171,6 +171,7 @@ btnTransfer.addEventListener("click", function(event){
   const amount = Number(inputTransferAmount.value)
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
   console.log(amount, receiverAcc)
+  inputTransferAmount.value = inputTransferTo.value = "";
 
   if (amount > 0 && 
     receiverAcc &&
@@ -186,7 +187,40 @@ btnTransfer.addEventListener("click", function(event){
 
 })
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
 
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+btnClose.addEventListener("click", function(event){
+  event.preventDefault();
+
+  console.log("delete");
+  if ( 
+    inputCloseUsername.value === currentAccount.username  && 
+    Number(inputClosePin.value) === currentAccount.pin){
+      const index = account.findIndex(acc => acc.username === currentAccount.username)
+      
+      
+      accounts.splice(index, 1)
+
+      containerApp.style.opacity = 0;
+
+    }
+
+    inputCloseUsername.value = inputClosePin.value = "";
+
+})
 
 
 
