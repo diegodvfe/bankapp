@@ -83,28 +83,29 @@ const displayMovments = function (movements) {
 
 //-------------!!! -------------------------------------------//
 
-const calcDisplayMovements = function(movements){
+const calcDisplayMovements = function(acc){
 
-  const incomes = movements.filter((mov)=> mov>0)
+  const incomes = acc.movements
+  .filter((mov)=> mov > 0)
   .reduce((acc, mov) => acc + mov, 0) 
   // console.log(incomes)
   labelSumIn.textContent = `${incomes}$`
 
-  const outcomer = movements.filter((mov) => mov < 0)
+  const outcomer = acc.movements
+  .filter((mov) => mov < 0)
   .reduce((acc, mov) => acc + mov, 0)
   labelSumOut.textContent = `${Math.abs(outcomer)}$`
 
-  const interest = movements
+  const interest = acc.movements
   .filter( mov=> mov >0 )
-  .map(deposit => (deposit * 1.2) /100)
+  .map(deposit => (deposit * acc.interestRate) /100)
   .filter((int, i ,arr)=>{
     return int >= 1
   })
   .reduce((acc,int) =>acc + int, 0 )
   labelSumInterest.textContent = `${interest}$`
 }
-// calcDisplayMovements(account1.movements)
-
+// calcDisplayMovements(accounts)
 
 // const createUsernames = funciton (user2) {
 //   const usersNameClient = user2
@@ -119,7 +120,8 @@ const calcDisplayMovements = function(movements){
 const createDB = function(accs){
       accs.forEach(function(acc){
       acc.username = acc.owner
-      .toLowerCase().split(" ").map(function(name){
+      .toLowerCase().split(" ")
+      .map(function(name){
       return name[0]
     }).join("")
 })
@@ -128,9 +130,7 @@ createDB(accounts)
 // console.table(accounts)
 
 const calbalaceUser = function( movements){
-  const balanceUserDB = movements.reduce((acc, mov)=>{
-   return acc + mov;
-  }, 0)
+  const balanceUserDB = movements.reduce((acc, mov)=> acc + mov , 0)
   labelBalance.textContent = `${balanceUserDB} USD`
 }
 // calbalaceUser(account1.movements)
@@ -140,29 +140,42 @@ const calbalaceUser = function( movements){
 let currentAccount;//-> utilizamos let para la movilidad de datos en la aplicacion
 
 btnLogin.addEventListener("click", function(event){
- //Prevent form from submiting
-  event.preventDefault();
+    //Prevent form from submiting
+      event.preventDefault();
 
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value)
-  console.log(currentAccount)
+  // console.log(currentAccount)
 
-  // condition
 if ( currentAccount?.pin === Number(inputLoginPin.value)){
     // console.log("LOGIN")
+
     // Display UI and message
     labelWelcome.textContent =`Welcome back, ${currentAccount.owner.split(" ")[0]}`
-   // contenedor de la aplicacion 
+   
+    // contenedor de la aplicacion 
    containerApp.style.opacity = 100;
+
    // Clear inpunts fields
    inputLoginUsername.value = inputLoginPin.value =  "";
    inputLoginPin.blur();
+
     // Display movements__type
     displayMovments(currentAccount.movements)
+
     //Display balanceUserDB
     calbalaceUser(currentAccount.movements)
+
     // Display Summary
-    calcDisplayMovements(currentAccount.movements)
+    calcDisplayMovements(currentAccount)
   } 
+})
+//--------------------------------------------------------------
+btnTransfer.addEventListener("click", function(event){
+  event.preventDefault();
+
+  const amount = Number(inputTransferAmount.value)
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  console.log(amount, receiverAcc)
 })
 
 
