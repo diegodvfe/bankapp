@@ -1,7 +1,6 @@
 'use strict';
 
 /////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // BANKIST APP
 
 // Data
@@ -129,11 +128,23 @@ const createDB = function(accs){
 createDB(accounts)
 // console.table(accounts)
 
-const calbalaceUser = function( movements){
-  const balanceUserDB = movements.reduce((acc, mov)=> acc + mov , 0)
-  labelBalance.textContent = `${balanceUserDB} USD`
+const calbalaceUser = function(acc){
+  acc.balance = acc.movements.reduce((acc, mov)=> acc + mov , 0)
+ 
+  labelBalance.textContent = `${acc.balance} USD`
 }
-// calbalaceUser(account1.movements)
+// calbalaceUser(accounts)
+
+const updateUI = function(acc){
+     // Display movements__type
+     displayMovments(acc.movements)
+
+     //Display balanceUserDB
+     calbalaceUser(acc)
+ 
+     // Display Summary
+     calcDisplayMovements(acc)
+}
 
 // Event handler
 // tenemos varias variable de transaciones
@@ -159,14 +170,7 @@ if ( currentAccount?.pin === Number(inputLoginPin.value)){
    inputLoginUsername.value = inputLoginPin.value =  "";
    inputLoginPin.blur();
 
-    // Display movements__type
-    displayMovments(currentAccount.movements)
-
-    //Display balanceUserDB
-    calbalaceUser(currentAccount.movements)
-
-    // Display Summary
-    calcDisplayMovements(currentAccount)
+   updateUI(currentAccount)
   } 
 })
 //--------------------------------------------------------------
@@ -177,9 +181,19 @@ btnTransfer.addEventListener("click", function(event){
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
   console.log(amount, receiverAcc)
 
-  const amountInteres = Number(inputLoanAmount.value)
-  const receiverInter = accounts.find(acc => acc.interestRate !== inputTransferTo.value);
-  console.log(amountInteres, receiverInter)
+  // const amountInteres = Number(inputLoanAmount.value)
+  // const receiverInter = accounts.find(acc => acc.interestRate !== inputTransferTo.value);
+  // console.log(amountInteres, receiverInter)
+
+  if (amount > 0 && 
+    receiverAcc &&
+    currentAccount.balance >= amount && 
+    receiverAcc?.username !== currentAccount.username) {
+      // doing the transfer
+        currentAccount.movements.push(-amount);
+        currentAccount.movements.push(amount);
+
+  }
 
 })
 
