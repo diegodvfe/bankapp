@@ -155,11 +155,11 @@ nav {
 }
 
 .movements__type--deposit {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-image: linear-gradient(to top left, #20366b, #b522a1);
 }
 
 .movements__type--withdrawal {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  background-image: linear-gradient(to top left, #7d9b23, #85cb24);
 }
 
 .movements__value {
@@ -214,15 +214,15 @@ nav {
 }
 
 .operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  background-image: linear-gradient(to top left, #bc8e2c, #ffcb03);
 }
 
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-image: linear-gradient(to top left, #13583e, #9be15d);
 }
 
 .operation--close {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  background-image: linear-gradient(to top left, #a01135, #ff585f);
 }
 
 h2 {
