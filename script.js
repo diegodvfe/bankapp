@@ -202,25 +202,28 @@ btnLoan.addEventListener('click', function (e) {
   inputLoanAmount.value = '';
 });
 
-btnClose.addEventListener("click", function(event){
-  event.preventDefault();
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
 
-  console.log("delete");
-  if ( 
-    inputCloseUsername.value === currentAccount.username  && 
-    Number(inputClosePin.value) === currentAccount.pin){
-      const index = account.findIndex(acc => acc.username === currentAccount.username)
-      
-      
-      accounts.splice(index, 1)
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index);
+    // .indexOf(23)
 
-      containerApp.style.opacity = 0;
+    // Delete account
+    accounts.splice(index, 1);
 
-    }
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
 
-    inputCloseUsername.value = inputClosePin.value = "";
-
-})
+  inputCloseUsername.value = inputClosePin.value = '';
+});
 
 
 
