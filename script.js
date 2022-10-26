@@ -220,9 +220,13 @@ btnClose.addEventListener('click', function (e) {
 
     // Hide UI
     containerApp.style.opacity = 0;
+
+    inputCloseUsername.blur()
+    inputClosePin.blur()
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+ 
 });
 
 
