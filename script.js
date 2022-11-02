@@ -523,10 +523,20 @@ console.log(owners);
 
 //Number
 console.log(movements)
-console.log(movements.sort())
 
+// Ascendig
 movements.sort((a, b) => {
- if (a>b) return 1;
- if (b>a) return -1;
+ if (a > b) return 1;
+ if (a < b) return -1;
 })
+//----> la otra forma es 
+movements.sort((a,b)=> {a -b})
+
+// Descending
+movements.sort((a,b) => {
+  if (a > b ) return -1;
+  if (a < b) return 1;
+})
+
+movements.sort((a,b)=> {b - a})
 
