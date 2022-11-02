@@ -242,7 +242,7 @@ btnClose.addEventListener('click', function (e) {
 // ]);
 
 const euToUsd = 1.1;
-
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 /////////////////////////////////////////////////
 /*
 let arr = [ "a", "b", "c", "d", "e"];
@@ -373,8 +373,6 @@ currenciesUnique.forEach(function(value, _ , map){
 })
 
 
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const euroValue = 1.1
 
@@ -517,4 +515,18 @@ const calcAvarageHumanAge = function(age){
 
 // const account = accounts.find(acc => acc.movements === "Jessica Davis")
 // console.log (account)
+
+const owners = [ "diego", "vanesa","adam", "martha"];
+
+console.log(owners.sort());
+console.log(owners);
+
+//Number
+console.log(movements)
+console.log(movements.sort())
+
+movements.sort((a, b) => {
+ if (a>b) return 1;
+ if (b>a) return -1;
+})
 
