@@ -61,13 +61,11 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 
-const displayMovments = function (movements, sort = false ) {
+const displayMovments = function (movements, sort= false ) {
 
-  containerMovements.innerHTML = ""
+  containerMovements.innerHTML = "";
 
-  const movs= sort ? movements.slice().sort((a, b)=>{
-    a -b 
-  }): movements
+  const movs = sort ? movements.slice().sort((a , b)=> {return a - b }) : movements
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -239,7 +237,8 @@ let sorted = false;
 
 btnSort.addEventListener("click", function (e) {
   e.preventDefault();
-  displayMovments(currentAccount.movments, !sorted);
+ 
+  displayMovments(currentAccount.movements, !sorted)
   sorted = !sorted 
 })
 
@@ -255,7 +254,7 @@ btnSort.addEventListener("click", function (e) {
 // ]);
 
 const euToUsd = 1.1;
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 /////////////////////////////////////////////////
 /*
 let arr = [ "a", "b", "c", "d", "e"];
@@ -529,27 +528,27 @@ const calcAvarageHumanAge = function(age){
 // const account = accounts.find(acc => acc.movements === "Jessica Davis")
 // console.log (account)
 
-const owners = [ "diego", "vanesa","adam", "martha"];
+// const owners = [ "diego", "vanesa","adam", "martha"];
 
-console.log(owners.sort());
-console.log(owners);
+// console.log(owners.sort());
+// console.log(owners);
 
-//Number
-console.log(movements)
+// //Number
+// console.log(movements)
 
-// Ascendig
-movements.sort((a, b) => {
- if (a > b) return 1;
- if (a < b) return -1;
-})
-//----> la otra forma es 
-movements.sort((a,b)=> {a -b})
+// // Ascendig
+// movements.sort((a, b) => {
+//  if (a > b) return 1;
+//  if (a < b) return -1;
+// })
+// //----> la otra forma es 
+// movements.sort((a,b)=> {a -b})
 
-// Descending
-movements.sort((a,b) => {
-  if (a > b ) return -1;
-  if (a < b) return 1;
-})
+// // Descending
+// movements.sort((a,b) => {
+//   if (a > b ) return -1;
+//   if (a < b) return 1;
+// })
 
-movements.sort((a,b)=> {b - a})
+// movements.sort((a,b)=> {b - a})
 
