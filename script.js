@@ -552,3 +552,13 @@ const calcAvarageHumanAge = function(age){
 
 // movements.sort((a,b)=> {b - a})
 
+
+const xy = Array.from({length: 100}, (_, i)=>{return i + 1  })
+console.table(xy)
+
+labelBalance.addEventListener("click", function(){
+
+  const movementsUI = Array.from(".movements__value")
+
+  console.log(movementsUI.map( el => el.textContent.replace("$", " ")))
+})
