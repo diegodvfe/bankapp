@@ -553,12 +553,79 @@ const calcAvarageHumanAge = function(age){
 // movements.sort((a,b)=> {b - a})
 
 
-const xy = Array.from({length: 100}, (_, i)=>{return i + 1  })
-console.table(xy)
+// const xy = Array.from({length: 100}, (_ , i)=>{return i + 1  })
+// console.table(xy)
 
-labelBalance.addEventListener("click", function(){
+// labelBalance.addEventListener("click", function(){
 
-  const movementsUI = Array.from(".movements__value")
+//   const movementsUI = Array.from(".movements__value")
 
-  console.log(movementsUI.map( el => el.textContent.replace("$", " ")))
-})
+//   console.log(movementsUI.map( el => el.textContent.replace("$", " ")))
+// })
+
+// Array Methods Practice message
+
+
+// existe otro metodo que reune a los dos metodos en uno flatMap 
+const bankDepositSum = accounts
+.flatMap(acc => acc.movements) //FlatMap
+.filter(mov => mov > 0)
+.reduce((sum, cur) => sum + cur, 0)
+
+console.log(bankDepositSum)
+
+//2. 
+// const numDeposits= accounts
+// .flatMap(acc => acc.movements) //FlatMap
+// .filter(mov => mov >= 1000).length;
+// console.log(numDeposits); 
+
+const numDeposits = accounts
+.flatMap(acc => acc.movements)
+.reduce((count, cur) => (cur >= 1000 ? ++count : count), 0)
+
+console.log(numDeposits)
+
+let a = 10 
+console.log(a)
+console.log(++a)
+
+//3. 
+const sums = accounts
+.flatMap(acc => acc.movements)
+.reduce((sums, cur) => {
+  cur > 0 ?  sums.deposits += cur : sums.withdrawals += cur;
+  return sums;
+}, {deposits: 0, withdrawals: 0})
+
+console.log(sums)
+
+const {deposits, withdrawals} = accounts // destruturacion de la  
+.flatMap(acc => acc.movements)
+.reduce(
+  (sums, cur) => {
+  // cur > 0 ?  sums.deposits += cur : sums.withdrawals += cur;
+  sums [cur > 0 ? "deposits" : "withdrawals"] += cur;
+  return sums;
+},
+ {deposits: 0, withdrawals: 0}
+ )
+
+console.log(deposits, withdrawals)
+
+//4.
+  // this is a nice title -> this Is a Nice Title
+  const convertTitleCase = function (title) {
+    const capatileze = (str) => { return str[0].toUpperCase() + str.slice(1)}
+    const expections = ["a", "an", "the", "but", "or", "in", "with", "and"]
+
+    const titleCase = title
+    .toLowerCase().split(" ")
+    .map(word => (expections.includes(word) ? word : capatileze(word)))
+    .join(" ")
+    return capatileze(titleCase);
+  }
+
+  console.log(convertTitleCase( "this is a nice title"))
+  console.log(convertTitleCase( "this is a LONG title but not too long"))
+  console.log(convertTitleCase( "and here is another titel with an EXAMPLE"))
